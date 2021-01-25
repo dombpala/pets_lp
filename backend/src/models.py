@@ -1,13 +1,6 @@
-from flask import Flask
-from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy import Column, ForeignKey, Date, Integer, String
-import config	
-
-app = Flask(__name__)
-app.config.from_object(config)
-db = SQLAlchemy(app)
-
-
+from sqlalchemy.sql import table, column, select
+from dbconn import db
 
 class Donacion(db.Model):
     __tablename__ = 'donacion'
@@ -43,14 +36,14 @@ class Persona(db.Model):
     fechaNacimiento = Column(Date,nullable=False)
     tipo = Column(String(20),nullable=False)
     def __repr__(self):
-        return (u'<{self.__class__.__name__}: {self.id}>'.format(self=self))
+        return (u'<{self.__class__.__name__}: {self.cedula}>'.format(self=self))
 
 class Voluntario(db.Model):
     __tablename__ = 'voluntario'
     id_persona = Column(String(10),ForeignKey('persona.cedula'),nullable=False,primary_key=True)
     tipo = Column(String(20),nullable=False)
     def __repr__(self):
-        return (u'<{self.__class__.__name__}: {self.id}>'.format(self=self))
+        return (u'<{self.__class__.__name__}: {self.id_persona}>'.format(self=self))
 
 class Adopcion(db.Model):
     __tablename__ = 'adopcion'
@@ -58,16 +51,8 @@ class Adopcion(db.Model):
     id_mascota = Column(Integer,ForeignKey('mascota.id'),nullable=False, primary_key=True)
     fecha = Column(Date,nullable=False)
     def __repr__(self):
-        return (u'<{self.__class__.__name__}: {self.id}>'.format(self=self))
+        return (u'<{self.__class__.__name__}: {self.id_duenio}>'.format(self=self))
 
-
-#persona = Persona(cedula="1234567890",nombre="Camilo",apellido="Gutierrez",fechaNacimiento='2017-05-02',tipo="voluntario")
-#voluntario = Voluntario(id_persona="0701775223",tipo="medico")
-#adopcion = Adopcion(id_duenio="1234567890",id_mascota=1,fecha="2021-01-24")
-donacion =Donacion(fecha="2021-1-24",id_donante="0701775223")
+donacion =Donacion(fecha="2021-1-24",id_donante="1234567890")
 db.session.add(donacion)
-db.session.commit()
-
-donacion_item = Donacion_item(id_donacion=1,descripcion="Una donacion bien linda salu2",cantidad=3,id=1)
-db.session.add(donacion_item)
 db.session.commit()
