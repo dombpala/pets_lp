@@ -52,7 +52,3 @@ class Adopcion(db.Model):
     fecha = Column(Date,nullable=False)
     def __repr__(self):
         return (u'<{self.__class__.__name__}: {self.id_duenio}>'.format(self=self))
-
-donacion =Donacion(fecha="2021-1-24",id_donante="1234567890")
-db.session.add(donacion)
-db.session.commit()
