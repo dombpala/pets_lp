@@ -1,5 +1,5 @@
-# Pet Managment System
-Progamming Language project.
+# Pet Management System
+Programming Language project.
 
 # LOGS
 ## First outline (24/01/2021)
