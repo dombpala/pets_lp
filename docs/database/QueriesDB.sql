@@ -1,5 +1,6 @@
 DROP DATABASE IF EXISTS gestion_mascotas;
 CREATE DATABASE gestion_mascotas;
+USE gestion_mascotas;
 
 CREATE TABLE `gestion_mascotas`.`persona` (
   `cedula` VARCHAR(10) NOT NULL,

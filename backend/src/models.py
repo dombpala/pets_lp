@@ -10,6 +10,13 @@ class Donacion(db.Model):
     def __repr__(self):
         return (u'<{self.__class__.__name__}: {self.id}>'.format(self=self))
 
+    def serialize(self):
+        return {
+            'id': self.id, 
+            'fecha': self.fecha,
+            'id_donante': self.id_donante
+        }
+
 class Donacion_item(db.Model):
     __tablename__ = 'donacion_item'
     id = Column(Integer, primary_key=True,nullable=False)
@@ -18,6 +25,14 @@ class Donacion_item(db.Model):
     cantidad = Column(Integer, nullable=False)
     def __repr__(self):
         return (u'<{self.__class__.__name__}: {self.id}>'.format(self=self))
+
+    def serialize(self):
+        return {
+            'id': self.id, 
+            'id_donacion': self.id_donacion,
+            'descripcion': self.descripcion,
+            'cantidad': self.cantidad
+        }
 
 class Mascota(db.Model):
     __tablename__ = 'mascota'
@@ -45,6 +60,15 @@ class Persona(db.Model):
     tipo = Column(String(20),nullable=False)
     def __repr__(self):
         return (u'<{self.__class__.__name__}: {self.cedula}>'.format(self=self))
+    
+    def serialize(self):
+        return {
+            'cedula': self.cedula, 
+            'nombre': self.nombre,
+            'apellido': self.apellido,
+            'fechaNacimiento': self.fechaNacimiento,
+            'tipo': self.tipo
+        }
 
 class Voluntario(db.Model):
     __tablename__ = 'voluntario'
@@ -52,6 +76,12 @@ class Voluntario(db.Model):
     tipo = Column(String(20),nullable=False)
     def __repr__(self):
         return (u'<{self.__class__.__name__}: {self.id_persona}>'.format(self=self))
+    
+    def serialize(self):
+        return {
+            'id_persona': self.id_persona,
+            'tipo': self.tipo
+        }
 
 class Adopcion(db.Model):
     __tablename__ = 'adopcion'
@@ -60,3 +90,10 @@ class Adopcion(db.Model):
     fecha = Column(Date,nullable=False)
     def __repr__(self):
         return (u'<{self.__class__.__name__}: {self.id_duenio}>'.format(self=self))
+
+    def serialize(self):
+        return {
+            'id_duenio': self.id_duenio,
+            'id_mascota': self.id_mascota,
+            'tipo': self.tipo
+        }

@@ -1,3 +1,5 @@
+import pymysql
+pymysql.install_as_MySQLdb()
 from api import app
 import datetime
 from flask import request,jsonify
