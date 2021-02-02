@@ -3,29 +3,29 @@
         return ('
             <ul class="grid grid-cols-2 gap-10 mt-10 mx-10">
                 <li>
-                    <a href="../pages/donaciones.php" class="bg-gray-50 hover:bg-purple-300 hover:border-transparent hover:shadow-lg group block rounded-lg p-4 border border-gray-200">
-                        <img class="rounded-full w-40 h-40 mx-auto" src="../assets/donaciones.svg" alt="">
+                    <a href="../pages/donaciones.php" class="bg-gray-50 hover:bg-purple-300 hover:border-transparent hover:shadow-lg group block rounded-lg p-4 border border-gray-200 flex flex-col items-center">
+                        <img class="w-32 h-32" src="../assets/donaciones.svg" alt="">
                         <h1 class="text-xl text-center font-bold">Donaciones</h1>  
                     </a>
                 </li>
 
                 <li>
-                    <a href="../pages/patrocinadores.php" class="bg-gray-50 hover:bg-purple-300 hover:border-transparent hover:shadow-lg group block rounded-lg p-4 border border-gray-200">
-                        <img class="rounded-full w-40 h-40 mx-auto" src="../assets/patrocinador.svg" alt="">
+                    <a href="../pages/patrocinadores.php" class="bg-gray-50 hover:bg-purple-300 hover:border-transparent hover:shadow-lg group block rounded-lg p-4 border border-gray-200 flex flex-col items-center">
+                        <img class="w-32 h-32" src="../assets/patrocinador.svg" alt="">
                         <h1 class="text-xl text-center font-bold">Patrocinadores</h1>  
                     </a>
                 </li>
 
                 <li>
-                    <a href="../pages/voluntarios.php" class="bg-gray-50 hover:bg-purple-300 hover:border-transparent hover:shadow-lg group block rounded-lg p-4 border border-gray-200">
-                        <img class="rounded-full w-40 h-40 mx-auto" src="../assets/maid.svg" alt="">
+                    <a href="../pages/voluntarios.php" class=" bg-gray-50 hover:bg-purple-300 hover:border-transparent hover:shadow-lg group block rounded-lg p-4 border border-gray-200 flex flex-col items-center">
+                        <img class="w-32 h-32" src="../assets/maid.svg" alt="">
                         <h1 class="text-xl text-center font-bold">Voluntarios</h1>  
                     </a>
                 </li>
 
                 <li>
-                    <a href="../pages/mascotas.php" class="hover:bg-purple-300 hover:border-transparent hover:shadow-lg group block rounded-lg p-4 border border-gray-200">
-                        <img class="rounded-full w-40 h-40 mx-auto " src="../assets/cat.svg" alt="" >
+                    <a href="../pages/mascotas.php" class="hover:bg-purple-300 hover:border-transparent hover:shadow-lg group block rounded-lg p-4 border border-gray-200 flex flex-col items-center">
+                        <img class="w-32 h-32" src="../assets/cat.svg" alt="" >
                         <h1 class="text-xl text-center font-bold">Mascotas</h1>  
                     </a>
                 </li>

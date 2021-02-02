@@ -20,7 +20,7 @@ function tableMascotas () {
             </form>
         
             <img src="../assets/gato.svg" class="rounded-full w-20 h-20 place-self-center bg-indigo-300">
-            <div class="font-medium capitalize place-self-center">trueno</div>
+            <div class="font-medium capitalize place-self-center">tetsu</div>
             <div class="font-medium capitalize place-self-center">gato</div>
             <div class="font-medium place-self-center">8</div>
             <form action="./formularioAdopcion.php" class="place-self-center">
