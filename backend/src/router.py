@@ -1,6 +1,6 @@
 from api import app
 import datetime
-from flask import request
+from flask import request,jsonify
 from flask_restful import Resource, Api
 from models import Persona, Donacion, Mascota, Adopcion
 from dbconn import session
@@ -33,6 +33,11 @@ class RouterMascota(Resource):
         session.add(mascota)
         session.commit()
 
+class RouterMascotas(Resource):
+    def get(self):
+        M = Mascota.query.all()
+        return jsonify([m.serialize() for m in M])
+
 
 class RouterAdopcion(Resource):
     def post(self):
@@ -46,6 +51,7 @@ class RouterAdopcion(Resource):
 api.add_resource(RouterPersona, '/persona/', '/persona/<string:persona_id>')
 api.add_resource(RouterDonacion, '/donacion/<string:donacion_id>')
 api.add_resource(RouterMascota, '/mascota/', '/mascota/<string:mascota_id>')
+api.add_resource(RouterMascotas,'/mascotas/')
 api.add_resource(RouterAdopcion, '/adopcion/')
 
 if __name__ == '__main__':

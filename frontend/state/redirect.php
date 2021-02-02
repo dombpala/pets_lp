@@ -1,4 +1,4 @@
 <?php
     setcookie("sessionuser",json_encode(array('username'=>$_POST['username'])));
-    header("Location: ../pages/home.php");
+    header("Location: /");
 ?>

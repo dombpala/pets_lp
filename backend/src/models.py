@@ -27,6 +27,14 @@ class Mascota(db.Model):
     especie = Column(String(20),nullable=False)
     def __repr__(self):
         return (u'<{self.__class__.__name__}: {self.id}>'.format(self=self))
+    
+    def serialize(self):
+        return {
+            'id': self.id, 
+            'name': self.nombre,
+            'age': self.edad,
+            'specie':self.especie
+        }
 
 class Persona(db.Model):
     __tablename__ = 'persona'

@@ -4,7 +4,7 @@
             '<div class="min-h-screen flex items-center justify-center py-12 px-4">
                 <div class="max-w-md w-full">
                     <h1 class="font-bold text-5xl text-gray-800 text-center">Bienvenido</h1>
-                    <form class="mt-5" action="../state/redirect.php" method="POST">
+                    <form class="mt-5" action="../actions/login.php" method="POST">
                         <div>
                             <div>
                                 <label for="username" class="font-light text-base text-gray-700">Usuario</label>

@@ -1,35 +1,91 @@
 <?php
-    include './components/login.php';
+    include './pages/LoginPage.php';
+    include './pages/HomePage.php';
+    include './pages/AdoptionPage.php';
+    function display($state,$callback){
+        return(
+            '<!doctype html>
+            <html>
+                <head>
+                    <meta charset="UTF-8" />
+                    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+                    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+                    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w==" crossorigin="anonymous" />
+                    <!-- ... -->
+                </head>
+                <body>
+                    '.$callback($state).'
+                </body>
+            </html>'
+        );
+    }
+    
+    function App($state = []){
+        return display($state["state"],$state["callback"]);
+    }
+
+
+    function showHome($username){
+        return array(
+            "state"=>array("username"=>$username,"active_menu"=>"Inicio"),
+            "callback"=>function($state){
+                return HomePage($state);
+            }
+        );
+    }
+
+    function showLogin(){
+        return array(
+            "state"=>null,
+            "callback"=>function($state){
+                return LoginPage($state);
+            }
+        );
+    }
+
+    function getData($data_parameter){
+        switch ($data_parameter) {
+            case 'pet':
+                return json_decode(file_get_contents('http://localhost:5000/mascotas/'),true);
+                break;
+        }
+        
+    }
+
+    function adoptionAction($showCallback){
+        $datos = getData('pet');
+        $username = json_decode($_COOKIE['sessionuser'])->{'username'};
+        return $showCallback($username,$datos);
+    }
+
+    function showAdoption($username,$pet_list){
+        return array(
+            "state"=>array("username"=>$username,"active_menu"=>"Adopcion","pet_list"=>$pet_list),
+            "callback"=>function($state){
+                return AdoptionPage($state);
+            }
+        );
+    }
+
+    function useState(){
+        if(isset($_GET['page'])){
+            switch ($_GET['page']) {
+                case 'logout':
+                    setcookie("sessionuser", "", time() - 3600);
+                    return showLogin();
+                case 'adoption':
+                    return adoptionAction(function($username,$pet_list){return showAdoption($username,$pet_list);});
+            }
+        }else{
+            if(isset($_COOKIE['sessionuser'])){
+                $username = json_decode($_COOKIE['sessionuser'])->{'username'};
+                return showHome($username);
+            }else{
+                return showLogin();
+            }
+        }
+    }
+
+    $state = useState();
+    echo App($state);
 ?>
-<!doctype html>
-<html>
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w==" crossorigin="anonymous" />
-  <!-- ... -->
-</head>
-<body>
-  <?php
-    echo(
-      '<main class="h-screen bg-white grid gap-4 grid-cols-6">
-        <div class="col-span-3">
-            '.Login().'
-        </div>
-        <div class="col-span-3 pt-16 bg-indigo-900">
-            <h1 class="text-5xl text-center mt-5 font-bold text-white">
-              CENTRO DE MASCOTAS  
-            </h1>
-            <p class="font-light text-white text-center p-2">
-              Sistema de gestión de recursos y adopción de mascotas.
-            </p>
-            <div class="p-4 flex content-center items-center justify-center">
-              <img src="./assets/void.svg" alt="" class="w-96 h-96 object-center">
-            </div>
-        </div>
-      </main>'
-    )
-  ?>
-</body>
-</html>

@@ -23,7 +23,7 @@
                                     <i class="fas fa-home"></i>
                                 </div>
                                 <div class="col-span-2">
-                                    <a href="../pages/home.php" class="">Inicio</a>
+                                    <a href="/" class="">Inicio</a>
                                 </div>
                             </div>
                             <div class="grid grid-cols-4 py-1 '.(($props['active_menu']=='Menu')? 'text-black':'text-gray-300').'">
@@ -39,7 +39,7 @@
                                     <i class="fas fa-paw"></i>
                                 </div>
                                 <div class="col-span-2">
-                                    <a href="../pages/adopcion.php" class="">Adopcion</a>
+                                    <a href="/?page=adoption" class="">Adopcion</a>
                                 </div>
                             </div>
                         </div>
@@ -47,7 +47,7 @@
                 </div>
                 <div class="h-full bg-white row-span-2 rounded-b-full p-12">
                     <div class="rounded-full bg-gray-900 text-center py-4 px-4">
-                        <a href="/" class=""><i class="fa fa-door-open" style="color: white;"></i></a>
+                        <a href="/?page=logout" class=""><i class="fa fa-door-open" style="color: white;"></i></a>
                     </div>
                 </div>
             </div>'
