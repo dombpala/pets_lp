@@ -2,6 +2,7 @@
     include './pages/LoginPage.php';
     include './pages/HomePage.php';
     include './pages/AdoptionPage.php';
+    include './pages/MenuPage.php';
     function display($state,$callback){
         return(
             '<!doctype html>
@@ -43,6 +44,15 @@
         );
     }
 
+    function showMenu($username){
+        return array(
+            "state"=>array("username"=>$username,"active_menu"=>"Menu"),
+            "callback"=>function($state){
+                return MenuPage($state);
+            }
+        );
+    }
+
     function getData($data_parameter){
         switch ($data_parameter) {
             case 'pet':
@@ -75,6 +85,10 @@
                     return showLogin();
                 case 'adoption':
                     return adoptionAction(function($username,$pet_list){return showAdoption($username,$pet_list);});
+                case 'menu' :
+                    $username = json_decode($_COOKIE['sessionuser'])->{'username'};
+                    return showMenu($username);
+
             }
         }else{
             if(isset($_COOKIE['sessionuser'])){

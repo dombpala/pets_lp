@@ -31,7 +31,7 @@
                                     <i class="fas fa-th-large"></i>
                                 </div>
                                 <div class="col-span-2">
-                                    <a href="../pages/menu.php" class="">Menu</a>
+                                    <a href="/?page=menu" class="">Menu</a>
                                 </div>
                             </div>
                             <div class="grid grid-cols-4 py-1 '.(($props['active_menu']=='Adopcion')? 'text-black':'text-gray-300').'">
