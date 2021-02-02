@@ -11,7 +11,7 @@
 
                 <li>
                     <a href="../pages/patrocinadores.php" class="bg-gray-50 hover:bg-purple-300 hover:border-transparent hover:shadow-lg group block rounded-lg p-4 border border-gray-200">
-                        <img class="rounded-full w-40 h-40 mx-auto"" src="../resources/patrocinadores.jpg" alt="">
+                        <img class="rounded-full w-40 h-40 mx-auto" src="../assets/patrocinador.svg" alt="">
                         <h1 class="text-xl text-center font-bold">Patrocinadores</h1>  
                     </a>
                 </li>

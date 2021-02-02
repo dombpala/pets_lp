@@ -20,7 +20,7 @@ include '../components/sidebar.php';
     </div>
 
     <div class="col-span-6 p-5">
-      <h1 class="font-bold text-5xl ml-10 mt-12">Adopción</h1>
+      <h1 class="font-bold text-5xl ml-10">Adopción</h1>
       <p class="text-gray-400 py-2 ml-10">Selecciona una mascota</p>
       <?php echo tableMascotas();?>
     </div>

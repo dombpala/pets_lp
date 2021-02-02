@@ -2,7 +2,7 @@
 
 function tableMascotas () {
     return <<<HTML
-        <div class="grid grid-cols-5 gap-4 my-10 ml-10">
+        <div class="grid grid-cols-5 gap-4 ml-10">
 
             <div class="col-span-1"></div>
             <div class="font-extrabold text-center text-lg">Nombre</div>
