@@ -7,13 +7,14 @@ include '../components/sidebar.php';
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w==" crossorigin="anonymous" />
   <!-- ... -->
 </head>
 <body>
     <main class="h-screen bg-white grid gap-4 grid-cols-7">
         <div class="col-span-1">
         <?php 
-            echo Sidebar(array("username"=>"Camilo", "active_menu"=>"Inicio"));
+            echo Sidebar(array("username"=>"Camilo", "active_menu"=>"Adopcion"));
         ?>
         </div>
 
@@ -41,7 +42,9 @@ include '../components/sidebar.php';
                 </div>
 
                 <div class="col-span-2 place-self-center mr-24">
-                    <input type="submit" value="Adoptar" class="font-medium border-black bg-black rounded-md text-white w-36 p-2 border-2">
+                    <button type="submit" class="font-medium border-black bg-black rounded-md text-white w-36 p-2 border-2">
+                        Adoptar
+                    </button>
                 </div>
                 
                 

@@ -16,7 +16,7 @@ function tableMascotas () {
             <div class="font-medium capitalize place-self-center">perro</div>
             <div class="font-medium place-self-center">8</div>
             <form action="./formularioAdopcion.php" class="place-self-center">
-                <button type="submit "class="font-medium border-black bg-black rounded-md text-white w-28 p-2 border-2">Adoptar</button>
+                <button type="submit "class="font-medium border-black rounded-md hover:bg-black hover:text-white w-28 p-2 border-2">Adoptar</button>
             </form>
         
             <img src="../assets/gato.svg" class="rounded-full w-20 h-20 place-self-center bg-indigo-300">
@@ -24,7 +24,7 @@ function tableMascotas () {
             <div class="font-medium capitalize place-self-center">gato</div>
             <div class="font-medium place-self-center">8</div>
             <form action="./formularioAdopcion.php" class="place-self-center">
-                <button class="place-self-center font-medium border-black rounded-md w-28 p-2 border-2">Adoptar</button>
+                <button class="place-self-center font-medium border-black rounded-md  hover:bg-black hover:text-white  w-28 p-2 border-2">Adoptar</button>
             </form>
         </div>
     HTML;
