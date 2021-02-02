@@ -1,5 +1,5 @@
 <?php
-    include './components/sidebar.php';
+    
     function HomePage($props=[]){
         return(
             '<main class="h-screen bg-white grid gap-4 grid-cols-7">
@@ -18,5 +18,3 @@
         );
     };
   ?>
-</body>
-</html>

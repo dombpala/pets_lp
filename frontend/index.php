@@ -1,8 +1,11 @@
 <?php
+    include './components/sidebar.php';
     include './pages/LoginPage.php';
     include './pages/HomePage.php';
     include './pages/AdoptionPage.php';
     include './pages/MenuPage.php';
+    include './pages/DonationPage.php';
+    include './pages/PatrocinadorPage.php';
     function display($state,$callback){
         return(
             '<!doctype html>
@@ -44,7 +47,8 @@
         );
     }
 
-    function showMenu($username){
+    function showMenu(){
+        $username = json_decode($_COOKIE['sessionuser'])->{'username'};
         return array(
             "state"=>array("username"=>$username,"active_menu"=>"Menu"),
             "callback"=>function($state){
@@ -58,6 +62,13 @@
             case 'pet':
                 return json_decode(file_get_contents('http://localhost:5000/mascotas/'),true);
                 break;
+            case 'adoptions':
+                return '';
+                #return json_decode(file_get_contents('http://localhost:5000/adopciones/'),true);
+                break;
+            case 'patrocinadores':
+                return '';
+                #return json_decode(file_get_contents('http://localhost:5000/patrocinadores/'),true);
         }
         
     }
@@ -77,6 +88,37 @@
         );
     }
 
+    function donationsAction($showCallback){
+        $datos = getData('adoptions');
+        $username = json_decode($_COOKIE['sessionuser'])->{'username'};
+        return $showCallback($username,$datos);
+    }
+
+    function showDonations($username,$donation_list){
+        return array(
+            "state"=>array("username"=>$username,"active_menu"=>"Menu","donation_list"=>$donation_list),
+            "callback"=>function($state){
+                return DonationPage($state);
+            }
+        );
+    }
+
+
+    function patrocinadoresAction($showCallback){
+        $datos = getData('patrocinadores');
+        $username = json_decode($_COOKIE['sessionuser'])->{'username'};
+        return $showCallback($username,$datos);
+    }
+
+    function showPatrocinadores($username,$patrocionador_list){
+        return array(
+            "state"=>array("username"=>$username,"active_menu"=>"Menu","patrocinador_list"=>$patrocionador_list),
+            "callback"=>function($state){
+                return PatrocinadorPage($state);
+            }
+        );
+    }
+
     function useState(){
         if(isset($_GET['page'])){
             switch ($_GET['page']) {
@@ -86,8 +128,12 @@
                 case 'adoption':
                     return adoptionAction(function($username,$pet_list){return showAdoption($username,$pet_list);});
                 case 'menu' :
-                    $username = json_decode($_COOKIE['sessionuser'])->{'username'};
-                    return showMenu($username);
+                    return showMenu();
+                case 'donations' :
+                    return donationsAction(function($username,$donation_list){return showDonations($username,$donation_list);});
+                case 'patrocinadores' :
+                    return patrocinadoresAction(function($username,$patrocionador_list){return showPatrocinadores($username,$patrocionador_list);});
+                    
 
             }
         }else{
