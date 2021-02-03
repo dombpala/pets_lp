@@ -1,5 +1,3 @@
-import pymysql
-pymysql.install_as_MySQLdb()
 from api import app
 import datetime
 from flask import request,jsonify
@@ -81,12 +79,22 @@ class RouterMascota(Resource):
 class RouterMascotas(Resource):
     def get(self):
         M = Mascota.query.all()
-        return jsonify([m.serialize() for m in M])
+        m_list = []
+        for m in M:
+            adoptado = Adopcion.query.filter_by(id_mascota=m.id).first()
+            if(not adoptado):
+                m_list.append(m.serialize())
+        return jsonify(m_list)
 
 
 class RouterAdopcion(Resource):
     def post(self):
         adopcion = Adopcion(id_duenio=request.form["id_owner"],id_mascota=request.form["id_pet"],fecha=datetime.datetime.now().isoformat())
+        persona = Persona.query.get(request.form["id_owner"])
+        if(not persona):
+            p = Persona(cedula=request.form["id_owner"],nombre=request.form["name"],apellido=request.form["last_name"],fechaNacimiento=request.form["birthday"],tipo="dueño")
+            session.add(p)
+            session.commit()
         session.add(adopcion)
         session.commit()
 

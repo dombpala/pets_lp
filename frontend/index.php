@@ -7,6 +7,7 @@
     include './pages/DonationPage.php';
     include './pages/SponsorPage.php';
     include './pages/VolunteerPage.php';
+    include './pages/AdoptionFormPage.php';
     include './pages/PetPage.php';
 
     function display($state,$callback){
@@ -56,6 +57,16 @@
             "state"=>array("username"=>$username,"active_menu"=>"Menu"),
             "callback"=>function($state){
                 return MenuPage($state);
+            }
+        );
+    }
+
+    function showFormAdoption(){
+        $username = json_decode($_COOKIE['sessionuser'])->{'username'};
+        return array(
+            "state"=>array("username"=>$username,"active_menu"=>"Adoption"),
+            "callback"=>function($state){
+                return AdoptionFormPage($state);
             }
         );
     }
@@ -172,7 +183,8 @@
                     return volunteersAction(function($username,$volunteer_list){return showVolunteers($username,$volunteer_list);});
                 case 'pets' :
                     return petsAction(function($username,$pet_list){return showPets($username,$pet_list);});
-                       
+                case 'adoption_form':
+                    return showFormAdoption();       
             }
         }else{
             if(isset($_COOKIE['sessionuser'])){

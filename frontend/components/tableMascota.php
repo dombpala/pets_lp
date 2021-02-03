@@ -6,9 +6,10 @@ function TileMascota($props=[]){
             <div class="font-medium capitalize place-self-center">'.$props['name'].'</div>
             <div class="font-medium capitalize place-self-center">'.$props['specie'].'</div>
             <div class="font-medium place-self-center">'.$props['age'].'</div>
-            <form action="./formularioAdopcion.php" class="place-self-center">
-                <button type="submit "class="font-medium border-black rounded-md hover:bg-black hover:text-white w-28 p-2 border-2">Adoptar</button>
-            </form>'
+            <div class="flex items-center">
+                <a href="/?page=adoption_form&pet='.$props['id'].'"class="font-medium border-black rounded-md hover:bg-black hover:text-white px-4 py-2 border-2">Adoptar</a>
+            </div>
+           '
     );
 }
 
