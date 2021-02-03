@@ -10,7 +10,7 @@
                     <div class="col-span-6 p-5">
                         <h1 class="text-5xl font-bold ml-10">Patrocinadores</h2>
                         <p class="text-gray-400 py-2 ml-10">Visualiza el estado de tus recursos</p>
-                        '.tablePatrocinadores($props['sponsor_list']).'
+                        '.TablePatrocinadores($props['sponsor_list']).'
                         <div class="grid grid-cols-6">
                             <div class="col-start-1 col-end-2 rounded-full bg-gray-900 text-white text-xl text-center ml-10 py-3 px-3">
                                 <a href="/?page=menu" class=""><i class="fas fa-arrow-circle-left mr-3" style="color: white;"></i>
