@@ -65,16 +65,15 @@
             case 'pet':
                 return json_decode(file_get_contents('http://localhost:5000/mascotas/'),true);
                 break;
-            case 'adoptions':
-                return '';
-                #return json_decode(file_get_contents('http://localhost:5000/adopciones/'),true);
+            case 'donations':
+                return json_decode(file_get_contents('http://localhost:5000/donaciones/'),true);
                 break;
             case 'sponsors':
-                return '';
-                #return json_decode(file_get_contents('http://localhost:5000/patrocinadores/'),true);
+                return json_decode(file_get_contents('http://localhost:5000/patrocinadores/'),true);
+                break;
             case 'volunteers':
-                return '';
-                #return json_decode(file_get_contents('http://localhost:5000/voluntarios/'),true);
+                return json_decode(file_get_contents('http://localhost:5000/voluntarios/'),true);
+                break;
         }
         
     }
@@ -95,7 +94,7 @@
     }
 
     function donationsAction($showCallback){
-        $datos = getData('adoptions');
+        $datos = getData('donations');
         $username = json_decode($_COOKIE['sessionuser'])->{'username'};
         return $showCallback($username,$datos);
     }
